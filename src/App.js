@@ -1,11 +1,13 @@
 import useLocalStorageState from "use-local-storage-state";
-import Form from "./components/Form/Form.js";
-import List from "./components/List/List.js";
+import Form from "./components/Form";
+import List from "./components/List";
 import { nanoid } from "nanoid";
 
 function App() {
   const [activities, setActivities] = useLocalStorageState("activity", {
-    defaultValue: [],
+    defaultValue: [
+      { name: "Katze füttern", isForGoodWeather: false, id: "200" },
+    ],
   });
 
   function handleAddActivity(newActivity) {
@@ -13,10 +15,10 @@ function App() {
   }
 
   return (
-    <div>
-      <List activties={activities} />
+    <main>
+      <List activities={activities} />
       <Form onAddActivity={handleAddActivity} />
-    </div>
+    </main>
   );
 }
 

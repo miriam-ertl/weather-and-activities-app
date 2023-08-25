@@ -1,4 +1,5 @@
 export default function List({ activities }) {
+  console.log(activities);
   return (
     <>
       <ul>

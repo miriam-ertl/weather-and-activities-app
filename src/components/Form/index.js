@@ -1,8 +1,8 @@
-export default function Form() {
+export default function Form({ onAddActivity }) {
   return (
     <form>
       <h1>Add new actitity:</h1>
-      <div classNmae="form__field">
+      <div className="form__field">
         <label htmlFor="activityName">Name of activity:</label>
         <input type="text" name="activityName" id="activityName" />
       </div>
@@ -10,8 +10,8 @@ export default function Form() {
         <label htmlFor="activityBox">Good weather actitity:</label>
         <input type="checkbox" name="activityBox" id="activityBox"></input>
       </div>
-      <div>
-        <button>Submit</button>
+      <div className="form__button">
+        <button type="submit">Submit</button>
       </div>
     </form>
   );

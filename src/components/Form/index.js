@@ -1,33 +1,30 @@
-import { useState } from "react";
+//import { useState } from "react";
 
 export default function Form({ onAddActivity }) {
-  const [isForGoodWeather, setISForGoodWeather] = useState(false);
+  function handleSubmit(event) {
+    event.preventDefault();
+    const formElements = event.target.elements;
+    const newAvtivity = {
+      name: formElements.name.value,
+      isForGooddWeather: formElements.isForGoodWeather.checked,
+    };
+    onAddActivity(newAvtivity);
+    event.target.reset();
+  }
 
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <h1>Add new actitity:</h1>
       <div className="form__field">
-        <label htmlFor="activityName">Name of activity:</label>
-        <input type="text" name="activityName" id="activityName" />
+        <label htmlFor="name">Name of activity:</label>
+        <input type="text" name="name" id="name" />
       </div>
-      <div key={isForGoodWeather.id} className="form__checkbox">
+      <div className="form__checkbox">
         <label htmlFor="activityBox">Good weather actitity:</label>
-        <input
-          type="checkbox"
-          name="activityBox"
-          id="activityBox"
-          checked={isForGoodWeather.checked}
-          onChange={() => setISForGoodWeather(!isForGoodWeather)}
-        >
-          {isForGoodWeather
-            ? isForGoodWeather.unchecked
-            : isForGoodWeather.checked}
-        </input>
+        <input type="checkbox" name="activityBox" id="activityBox" />
       </div>
       <div className="form__button">
-        <button type="submit" onClick={onAddActivity}>
-          Submit
-        </button>
+        <button type="submit">Submit</button>
       </div>
     </form>
   );

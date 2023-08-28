@@ -4,23 +4,23 @@ export default function Form({ onAddActivity }) {
   function handleSubmit(event) {
     event.preventDefault();
     const formElements = event.target.elements;
-    const newAvtivity = {
+    const newActivity = {
       name: formElements.name.value,
-      isForGooddWeather: formElements.isForGoodWeather.checked,
+      isForGoodWeather: formElements.isForGoodWeather.checked,
     };
-    onAddActivity(newAvtivity);
+    onAddActivity(newActivity);
     event.target.reset();
   }
 
   return (
     <form onSubmit={handleSubmit}>
-      <h1>Add new actitity:</h1>
+      <h1>Add new activity:</h1>
       <div className="form__field">
         <label htmlFor="name">Name of activity:</label>
         <input type="text" name="name" id="name" />
       </div>
       <div className="form__checkbox">
-        <label htmlFor="activityBox">Good weather actitity:</label>
+        <label htmlFor="activityBox">Good weather activity:</label>
         <input type="checkbox" name="isForGoodWeather" id="activityBox" />
       </div>
       <div className="form__button">

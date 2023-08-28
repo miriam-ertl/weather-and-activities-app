@@ -4,7 +4,7 @@ import List from "./components/List";
 import { nanoid } from "nanoid";
 
 function App() {
-  const isGoodWeather = true;
+  const isGoodWeather = false;
   const [activities, setActivities] = useLocalStorageState("activity", {
     defaultValue: [
       { name: "Katze füttern", isForGoodWeather: false, id: "200" },
@@ -15,19 +15,13 @@ function App() {
     setActivities([...activities, { ...newActivity, id: nanoid(6) }]);
   }
 
-  function handleSubmit(id) {
-    setActivities(
-      activities.map((activity) =>
-        activity.id === id
-          ? { ...activity, isGoodWeather: !isGoodWeather }
-          : activity
-      )
-    );
-  }
+  const filteredActivities = activities.filter(
+    (activity) => activity.isForGoodWeather === isGoodWeather
+  );
 
   return (
     <main>
-      <List activities={activities} onAddActivity={handleSubmit} />
+      <List activities={filteredActivities} onAddActivity={handleAddActivity} />
       <Form onAddActivity={handleAddActivity} />
     </main>
   );
